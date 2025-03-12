@@ -39,7 +39,7 @@ public class abc396_c {
         // 累積和と最大値の計算
         for (int i = 0; i < M; i++) {
             T[i + 1] = T[i] + B.get(i);
-            maxT[i + 1] = Math.max(maxT[i], T[i + 1]);　// その地点で選ばれる最大値も持っておく
+            maxT[i + 1] = Math.max(maxT[i], T[i + 1]); // その地点で選ばれる最大値も持っておく
         }
         
         // 答えの計算
