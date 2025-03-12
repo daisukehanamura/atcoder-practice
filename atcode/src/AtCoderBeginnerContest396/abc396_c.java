@@ -3,7 +3,9 @@ package AtCoderBeginnerContest396;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 import java.util.Collections;
+import java.util.stream.IntStream;
 
 public class abc396_c {
         public static void main(String[] args) throws Exception {
@@ -74,6 +76,9 @@ public class abc396_c {
         List<Integer> BSum = new ArrayList<>();
         List<Integer> WSum = new ArrayList<>();
 
+        BSum = IntStream.range(0, B.size())
+        .mapToObj(i -> B.subList(0, i + 1).stream().reduce(0, Integer::sum))
+        .collect(Collectors.toList());
         
         int sum = 0;
         for (int num : B) {
