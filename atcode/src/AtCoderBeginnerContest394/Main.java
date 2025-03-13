@@ -17,15 +17,20 @@ public class Main {
             S[i] = STmp.charAt(i);
         }
 
-        for(int i=1; i<S.length; i++){
-            if(S[i-1] == 'W' && S[i] == 'A'){
-                S[i-1] = 'A';
+        int renzokuW = 0;
+        for (int i = 1; i < S.length; i++) {
+            if(S[i - 1] == 'W') {
+                renzokuW++;
+            } 
+
+            if (S[i - 1] == 'W' && S[i] == 'A') {
                 S[i] = 'C';
 
-                if(i!=1 && S[i-2]=='W' && S[i-1]=='A'){
-                    S[i-2] = 'A';
-                    S[i-1] = 'C';
+                for(int j=1; j<renzokuW; j++) {
+                    S[i - j] = 'C';
                 }
+                S[i-renzokuW] = 'A';
+                renzokuW = 0;
             }
         }
 
