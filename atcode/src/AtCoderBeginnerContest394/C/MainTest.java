@@ -1,4 +1,4 @@
-package AtCoderBeginnerContest394;
+package AtCoderBeginnerContest394.C;
 
 import java.util.Scanner;
 
