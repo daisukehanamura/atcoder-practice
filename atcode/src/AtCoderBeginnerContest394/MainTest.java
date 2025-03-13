@@ -9,16 +9,9 @@ public class MainTest {
     public static String AC = "AC";
 
     public static void main(String[] args) throws Exception {
-        mainTest("WAWAWA");
-        mainANS("WAWAWA");
+        mainTest("WWWCWA");
+        mainANS("WWWCWA");
         System.out.println("-----");
-        mainTest("WAWA");
-        mainANS("WAWA");
-        System.out.println("-----");
-        mainTest("WWAWA");
-        mainANS("WWAWA");
-        System.out.println("-----");
-
         
     }
 
@@ -33,6 +26,8 @@ public class MainTest {
         for (int i = 1; i < S.length; i++) {
             if(S[i - 1] == 'W') {
                 renzokuW++;
+            }else{
+                renzokuW = 0;
             } 
 
             if (S[i - 1] == 'W' && S[i] == 'A') {

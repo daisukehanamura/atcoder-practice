@@ -17,10 +17,13 @@ public class Main {
             S[i] = STmp.charAt(i);
         }
 
+
         int renzokuW = 0;
         for (int i = 1; i < S.length; i++) {
             if(S[i - 1] == 'W') {
                 renzokuW++;
+            }else{
+                renzokuW = 0;
             } 
 
             if (S[i - 1] == 'W' && S[i] == 'A') {
