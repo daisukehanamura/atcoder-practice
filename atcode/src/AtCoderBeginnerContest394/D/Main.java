@@ -1,6 +1,7 @@
 package AtCoderBeginnerContest394.D;
 
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Main {
 
@@ -13,58 +14,43 @@ public class Main {
             S[i] = STmp.charAt(i);
         }
 
-        int skipiBlank = 0;
-        for (int i = 0; i < STmp.length() - 1; i++) {
-            switch (S[i]) {
-                case '(':
-                    if (S[i + 1 + skipiBlank] == ')') {
-                        S[i] = ' ';
-                        S[i+1+skipiBlank] = ' ';
-                        if(i!=0){
-                            i -= 2;
+        Stack<Character> stack = new Stack<>();
+        stack.push(' ');
+        Character top = ' ';
+        for (int i = 0; i < STmp.length(); i++) {
+            if (S[i] == '(' || S[i] == '[' || S[i] == '{') {
+                stack.push(S[i]);
+            } else {
+                switch (S[i]) {
+                    case ')':
+                        if (top == '(') {
+                            stack.pop();
+                        } else {
+                            stack.push(S[i]);
                         }
-                        skipiBlank += 2;
-                    }else{
-                        skipiBlank = 0;
-                    }
-                    break;
-                case '[':
-                    if (S[i + 1 + skipiBlank] == ']') {
-                        S[i] = ' ';
-                        S[i+1+skipiBlank] = ' ';
-                        if(i!=0){
-                            i -= 2;
+                        break;
+                    case ']':
+                        if (top == '[') {
+                            stack.pop();
+                        } else {
+                            stack.push(S[i]);
                         }
-                        skipiBlank += 2;
-                    }else{
-                        skipiBlank = 0;
-                    }
-                    break;
-                case '<':
-                    if (S[i + 1 + skipiBlank] == '>') {
-                        S[i] = ' ';
-                        S[i+1+skipiBlank] = ' ';
-                        if(i!=0){
-                            i -= 2;
+                        break;
+                    case '}':
+                        if (top == '{') {
+                            stack.pop();
+                        } else {
+                            stack.push(S[i]);
                         }
-                        skipiBlank += 2;
-                    }else{
-                        skipiBlank = 0;
-                    }
-                    break;
-                default:
-                    skipiBlank = 0;
-                    break;
+                        break;
+                }
             }
+            top = stack.peek();
         }
-
-        for(int i=0; i<S.length; i++){
-            if(S[i] != ' '){
-                System.out.print("No");
-                return;
-            }
+        if(stack.size()==1){
+            System.out.print("Yes");
+        }else{
+            System.out.print("No");
         }
-        System.out.print("Yes");
-
     }
 }
