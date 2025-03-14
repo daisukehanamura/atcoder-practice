@@ -14,7 +14,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
         int M = sc.nextInt();
-        //Queue<Integer> ans = new ArrayDeque<>();
+        Queue<Integer> ans = new ArrayDeque<>();
 
         // 鳩の場所
         int pigeon[] = new int[N];
@@ -28,6 +28,7 @@ public class Main {
             nest[i] = 1;
         }
     
+        int sum = 0;
         for(int i=0; i<M; i++){
             int queryNum = sc.nextInt();
 
@@ -42,23 +43,26 @@ public class Main {
                 nest[H-1]++;
                 // 鳩の場所を更新
                 pigeon[P-1] = H-1;
+                // 複数の鳩の場所を更新
+                // ①前の場所が１の場合、減算
+                // ②後の場所が２の場合、加算
+                if(nest[tmp] == 1){
+                    sum--;
+                }
+                if(nest[H-1] == 2){
+                    sum++;
+                }
+
             // 重複場所の出力
             }else{
-                //ans.add(sum(nest));
-                System.out.println(sum(nest));
+                ans.add(sum);
+                //System.out.println(sum);
             }
         }
         
         // stackの中身を出力
-        //System.out.println("---");
-        //ans.stream().forEach(System.out::println);
+        System.out.println("---");
+        ans.stream().forEach(System.out::println);
     }
 
-    public static int sum(int nest[]){
-        int sum = 0;
-        for(int i=0; i<nest.length; i++){
-            if(nest[i] > 1){sum ++;}
-        }
-        return sum;
-    }
 }
