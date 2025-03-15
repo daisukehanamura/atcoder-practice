@@ -11,38 +11,22 @@ public class Main {
         int N = sc.nextInt();
         int A[] = new int[N];
         int B[] = new int[N];
-        Map<Integer,Integer> KeyCount = new HashMap<>();
+        Map<Integer, Integer> keyMap = new HashMap<>();
 
-
-        for(int i=0; i<N; i++){
+        for (int i = 0; i < N; i++) {
             A[i] = sc.nextInt();
-
-            if(KeyCount.get(A[i]) == null){
-                KeyCount.put(A[i],1);
-            }else{
-                KeyCount.replace(A[i],KeyCount.get(A[i])+1);
-            }
-
             B[i] = -1;
-            for(int j=1; j<=i; j++){
-                if(KeyCount.get(A[i]) == 1){   
-                    break;
-                }
-                if(A[i] == A[i-j]){
-                    B[i] = i-j+1;
-                    break;
-                }
+
+            if (keyMap.get(A[i]) == null) {
+                keyMap.put(A[i], i);
+            } else {
+                B[i] = keyMap.get(A[i]) + 1;
+                keyMap.replace(A[i], i);
             }
         }
 
-        // for(int i=1; i<N; i++){
-
-        // }
-
-        for(int i=0; i<N; i++){
+        for (int i = 0; i < N; i++) {
             System.out.print(B[i] + " ");
         }
-
     }
-
 }
